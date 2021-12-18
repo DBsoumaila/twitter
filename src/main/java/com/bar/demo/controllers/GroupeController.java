@@ -15,54 +15,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bar.demo.model.Produit;
-import com.bar.demo.service.ProduitService;
+import com.bar.demo.model.Groupe;
+import com.bar.demo.service.GroupeService;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
 @RestController
-@RequestMapping(name="/")
-public class MainController {
+@RequestMapping(name="/groupe")
+public class GroupeController {
 
 	
 	@Autowired
-	private ProduitService produitService;
+	private GroupeService groupeService;
 	
-	 @GetMapping("/produits")
-	    public ResponseEntity<List<Produit> > getAllProducts() {
+	 @GetMapping("/groupe/all")
+	    public ResponseEntity<List<Groupe> > getAllProducts() {
 		 
-		  List<Produit> produits =  produitService.listAll();
+		  List<Groupe> groupes =  groupeService.listAll();
 	       
-	        return new ResponseEntity<>(produits, HttpStatus.OK);
+	        return new ResponseEntity<>(groupes, HttpStatus.OK);
 	    }
 
-	    @GetMapping("/produit/find/{id}")
-	    public ResponseEntity<Produit> getAdminById (@PathVariable("id") int id) {
-	        Produit admin = produitService.getProduit(id);
+	    @GetMapping("/groupe/find/{id}")
+	    public ResponseEntity<Groupe> getAdminById (@PathVariable("id") int id) {
+	        Groupe admin = groupeService.getGroupe(id);
 	        return new ResponseEntity<>(admin, HttpStatus.OK);
 	    }
 
-	    @PostMapping("/produit/add")
-	    public ResponseEntity<Produit> addAdmin(@RequestBody Produit admin) {
-	        Produit newAdmin = produitService.save(admin);
+	    @PostMapping("/groupe/add")
+	    public ResponseEntity<Groupe> addAdmin(@RequestBody Groupe admin) {
+	        Groupe newAdmin = groupeService.save(admin);
 	        return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	    }
 
-	    @PutMapping("/produit/update")
-	    public ResponseEntity<Produit> updateAdmin(@RequestBody Produit admin) {
-	        Produit updateAdmin = produitService.updateAdminByProduct(admin);
+	    @PutMapping("/groupe/update")
+	    public ResponseEntity<Groupe> updateAdmin(@RequestBody Groupe admin) {
+	        Groupe updateAdmin = groupeService.updateAdminByGroupe(admin);
 	        return new ResponseEntity<>(updateAdmin, HttpStatus.OK);
 	    }
 
-	    @DeleteMapping("/admin/delete/{id}")
+	    @DeleteMapping("/groupe/delete/{id}")
 	    public ResponseEntity<?> deleteAdmin(@PathVariable("id") int id) {
-	    	produitService.delete(id);
+	    	groupeService.delete(id);
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    }
-	    @GetMapping("/produits/{recherche}")
-	    public List<Produit> testeDeRequetes(@PathVariable String recherche) {
-	        return produitService.findByNameLike("%"+recherche+"%");
-	    }
+	   
 
 }
