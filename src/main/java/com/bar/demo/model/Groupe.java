@@ -4,10 +4,15 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
+@Table(name="Groupe")
+@Entity
 public class Groupe {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id",nullable = false, updatable = false)
 	private int idGroupe;
 	private String nomDuGroupe;
 	private Date dateCreation;

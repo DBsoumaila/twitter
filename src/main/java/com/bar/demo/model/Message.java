@@ -2,11 +2,15 @@ package com.bar.demo.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Table(name="Message")
+@Entity
 public class Message {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id",nullable = false, updatable = false)
 	private int id;
 	private String message;
 	private Date dateDuMessage;

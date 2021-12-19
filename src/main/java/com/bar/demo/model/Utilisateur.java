@@ -1,10 +1,7 @@
 package com.bar.demo.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,6 +45,9 @@ public class Utilisateur implements Serializable{
 	            inverseJoinColumns = { @JoinColumn(name = "group_fk") })
 
 	    private Set<Groupe> groupes=new HashSet<>();
+
+	@OneToMany(mappedBy = "user")
+	private Collection<Bookmark> bookmarks;
 
 	public int getId() {
 		return id;
