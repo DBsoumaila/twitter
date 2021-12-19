@@ -50,6 +50,20 @@ public class Tweet {
 
     private boolean pinned = false;
 
+    @ManyToOne
+    @JoinColumn(
+            nullable = false,
+            name = "topicid"
+    )
+    private Topic topic;
+
+    @ManyToOne
+    @JoinColumn(
+            nullable = false,
+            name = "hashtagid"
+    )
+    private Hashtag hashtag;
+
     public Tweet(Utilisateur author, String textualContent,
                  byte[] mediaContent, LocalDateTime createdat,
                  Collection<Utilisateur> usersMentioned) {

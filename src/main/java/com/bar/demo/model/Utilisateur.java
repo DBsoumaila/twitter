@@ -49,6 +49,9 @@ public class Utilisateur implements Serializable{
 	@OneToMany(mappedBy = "user")
 	private Collection<Bookmark> bookmarks;
 
+	@OneToMany(mappedBy = "user")
+	private Collection<Search> searches;
+
 	public int getId() {
 		return id;
 	}
