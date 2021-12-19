@@ -48,6 +48,8 @@ public class Tweet {
     @OneToMany(mappedBy = "tweet")
     private Collection<Bookmark> bookmarks;
 
+    private boolean pinned = false;
+
     public Tweet(Utilisateur author, String textualContent,
                  byte[] mediaContent, LocalDateTime createdat,
                  Collection<Utilisateur> usersMentioned) {

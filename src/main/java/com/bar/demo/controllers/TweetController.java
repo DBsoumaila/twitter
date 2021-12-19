@@ -60,5 +60,18 @@ public class TweetController {
         tweetService.setBookmark(tweetid, userid);
     }
 
+    @PostMapping(path = "delete.bookmark")
+    public void deleteBookmark(@RequestParam(value = "bookmarkid") Long bookmarkid) {
+        tweetService.deleteBookmark(bookmarkid);
+    }
 
+    @PostMapping(path = "pin.tweet")
+    public void setPin(@RequestParam(value = "tweetid") Long tweetid) {
+        tweetService.pinTweet(tweetid);
+    }
+
+    @PostMapping(path = "delete.pin")
+    public void deletePin(@RequestParam(value = "tweetid") Long tweetid) {
+        tweetService.deletePin(tweetid);
+    }
 }

@@ -63,4 +63,29 @@ public class TweetService {
         //...
         System.out.println("Function : setBookmark");
     }
+
+    //affichage des boukmarks par user
+
+    public void deleteBookmark(Long bookmarkid) {
+        //get bookmark
+        //delete bookmark
+        //...
+        System.out.println("Function : deleteBookmark");
+    }
+
+    public void pinTweet(Long tweetid) {
+        //goal : display one of your own tweet at the top of your profile
+        //check if a tweet is already pinned
+        //if there is one -> reject operation
+        //else -> set pinned = true;
+        System.out.println("Function : pinTweet");
+    }
+
+    public void deletePin(Long tweetid) {
+        //get tweet
+        //set pinned = false;
+        //...
+        System.out.println("Function : deletePin");
+    }
+
 }
