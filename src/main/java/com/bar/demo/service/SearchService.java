@@ -18,7 +18,7 @@ public class SearchService {
     @Autowired
     private UtilisateurRepo utilisateurRepo;
 
-    public void searchTweetsByKeyWord(String keyword) {
+    public void searchTweetsByKeyword(String keyword) {
         //save search
         //...
         System.out.println("Function : searchTweetsByKeyWord");
@@ -60,7 +60,6 @@ public class SearchService {
     }
 
     public void searchUsersByKeyword(String keyword) {
-        //fullname
         //save search
         //...
         System.out.println("Function : searchUsersByKeyword");
