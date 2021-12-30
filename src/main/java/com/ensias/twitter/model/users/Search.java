@@ -1,4 +1,4 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.users;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

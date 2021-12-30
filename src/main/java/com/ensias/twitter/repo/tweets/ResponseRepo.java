@@ -1,6 +1,6 @@
-package com.ensias.twitter.repo;
+package com.ensias.twitter.repo.tweets;
 
-import com.ensias.twitter.model.Response;
+import com.ensias.twitter.model.tweets.Response;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,13 +2,13 @@ package com.ensias.twitter.service;
 
 import java.util.List;
 
-import com.ensias.twitter.repo.SuggestionRepo;
+import com.ensias.twitter.repo.users.SuggestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ensias.twitter.exception.UserNotFoundException;
-import com.ensias.twitter.model.Suggestion;
+import com.ensias.twitter.model.users.Suggestion;
 
 
 @Service

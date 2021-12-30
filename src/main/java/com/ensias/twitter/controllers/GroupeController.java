@@ -2,7 +2,7 @@ package com.ensias.twitter.controllers;
 
 import java.util.List;
 
-import com.ensias.twitter.model.Groupe;
+import com.ensias.twitter.model.messages.Groupe;
 import com.ensias.twitter.service.GroupeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

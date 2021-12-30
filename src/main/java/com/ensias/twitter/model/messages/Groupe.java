@@ -1,4 +1,6 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.messages;
+
+import com.ensias.twitter.model.users.Utilisateur;
 
 import java.util.Date;
 import java.util.HashSet;

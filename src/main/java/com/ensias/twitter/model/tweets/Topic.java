@@ -1,4 +1,4 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.tweets;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,19 +11,19 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Hashtag {
+public class Topic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="topiclabel")
-    private String hashtaglabel;
+    private String topiclabel;
 
-    @OneToMany(mappedBy = "hashtag")
+    @OneToMany(mappedBy = "topic")
     private Collection<Tweet> tweets;
 
-    public Hashtag(String hashtaglabel) {
-        this.hashtaglabel = hashtaglabel;
+    public Topic(String topiclabel) {
+        this.topiclabel = topiclabel;
     }
 }

@@ -1,4 +1,9 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.users;
+
+import com.ensias.twitter.model.messages.Groupe;
+import com.ensias.twitter.model.messages.Message;
+import com.ensias.twitter.model.notifications.Notification;
+import com.ensias.twitter.model.tweets.Bookmark;
 
 import java.io.Serializable;
 import java.util.*;
@@ -23,32 +28,46 @@ public class Utilisateur implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id",nullable = false, updatable = false)
 	private int id;
-	
+
+	@Column(nullable = false)
 	private String nom;
+
+	@Column(nullable = false)
 	private String prenom;
+
+	@Column(nullable = false, unique = true)
 	private String email;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+	@Column(nullable = false)
 	private String password;
+
+	@Column(nullable = false)
+	private Date joinedAt;
+
 	//les notification de l'utilisateur	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
-    private List<Notification> notifications=new ArrayList<>();
+    private List<Notification> notifications = new ArrayList<>();
 	
 	//mapper les messages
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "sender")
-    private List<Message> messages=new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 	
 	//Mapping avec les groupes
-	  @ManyToMany(cascade = CascadeType.ALL)
-	    @JoinTable(name ="user_groupe",
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name ="user_groupe",
 	            joinColumns = { @JoinColumn(name ="user_fk") },
 	            inverseJoinColumns = { @JoinColumn(name = "group_fk") })
 
-	    private Set<Groupe> groupes=new HashSet<>();
+	private Set<Groupe> groupes = new HashSet<>();
 
 	@OneToMany(mappedBy = "user")
-	private Collection<Bookmark> bookmarks;
+	private Collection<Bookmark> bookmarks = new ArrayList<>();
 
 	@OneToMany(mappedBy = "user")
-	private Collection<Search> searches;
+	private Collection<Search> searches = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -114,8 +133,40 @@ public class Utilisateur implements Serializable{
 		this.groupes = groupes;
 	}
 
-	public Utilisateur(int id, String nom, String prenom, String email, String password,
-			List<Notification> notifications, List<Message> messages, Set<Groupe> groupes) {
+	public Date getJoinedAt() {
+		return joinedAt;
+	}
+
+	public void setJoinedAt(Date joinedAt) {
+		this.joinedAt = joinedAt;
+	}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Collection<Bookmark> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(Collection<Bookmark> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
+
+    public Collection<Search> getSearches() {
+        return searches;
+    }
+
+    public void setSearches(Collection<Search> searches) {
+        this.searches = searches;
+    }
+
+    public Utilisateur(int id, String nom, String prenom, String email, String password,
+                       List<Notification> notifications, List<Message> messages, Set<Groupe> groupes) {
 		super();
 		this.id = id;
 		this.nom = nom;

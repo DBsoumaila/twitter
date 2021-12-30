@@ -2,7 +2,7 @@ package com.ensias.twitter.controllers;
 
 import java.util.List;
 
-import com.ensias.twitter.model.Abonnement;
+import com.ensias.twitter.model.users.Abonnement;
 import com.ensias.twitter.service.AbonementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

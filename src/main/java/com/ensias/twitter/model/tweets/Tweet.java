@@ -1,5 +1,7 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.tweets;
 
+
+import com.ensias.twitter.model.users.Utilisateur;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

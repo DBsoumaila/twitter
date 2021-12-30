@@ -1,10 +1,9 @@
-package com.ensias.twitter.repo;
+package com.ensias.twitter.repo.users;
 
 
+import com.ensias.twitter.model.users.Abonnement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.ensias.twitter.model.Abonnement;
 
 
 @Repository

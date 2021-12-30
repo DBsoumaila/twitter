@@ -1,7 +1,7 @@
 package com.ensias.twitter.service;
 
-import com.ensias.twitter.repo.TweetRepo;
-import com.ensias.twitter.repo.UtilisateurRepo;
+import com.ensias.twitter.repo.tweets.TweetRepo;
+import com.ensias.twitter.repo.users.UtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

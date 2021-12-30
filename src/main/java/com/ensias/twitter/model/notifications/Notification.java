@@ -1,4 +1,6 @@
-package com.ensias.twitter.model;
+package com.ensias.twitter.model.notifications;
+
+import com.ensias.twitter.model.users.Utilisateur;
 
 import java.io.Serializable;
 
@@ -14,7 +16,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Notification")
-
 public class Notification implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

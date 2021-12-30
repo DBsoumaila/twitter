@@ -1,9 +1,10 @@
 package com.ensias.twitter.service;
 
+import java.util.Date;
 import java.util.List;
 
-import com.ensias.twitter.model.Utilisateur;
-import com.ensias.twitter.repo.UtilisateurRepo;
+import com.ensias.twitter.model.users.Utilisateur;
+import com.ensias.twitter.repo.users.UtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,34 +16,52 @@ import com.ensias.twitter.exception.UserNotFoundException;
 @Transactional
 public class UtilisateurService {
 	@Autowired
-	private UtilisateurRepo repoAdmin;
+	private UtilisateurRepo repoUser;
 	
 	public List <Utilisateur> listAll() {
-		return repoAdmin.findAll();
+		return repoUser.findAll();
 	}
 	
-	public Utilisateur save(Utilisateur admin) {
-		return repoAdmin.save(admin);
+	public Utilisateur save(Utilisateur user) {
+		if(repoUser.findByEmail(user.getEmail()).isEmpty()) {
+			user.setJoinedAt(new Date());
+			return repoUser.save(user);
+		}
+		else
+			throw new IllegalStateException("Utilisateur " + user.getEmail() + " existe déjà");
+	}
+
+	public Utilisateur login(String username, String password) {
+		if(repoUser.findByUsername(username).isPresent()) {
+			Utilisateur user = repoUser.findByUsername(username).get();
+			if(user.getPassword().equals(password))
+				return user;
+			else
+				throw new IllegalStateException("Wrong password");
+		}
+		else
+			throw new IllegalStateException("User  @" + username + " not found");
 	}
 	
-	public Utilisateur getUtilisateur(int id) {
-		return repoAdmin.findById(id).orElseThrow(() -> new UserNotFoundException("Utilisateur avec " + id + " N'existe pas"));
+	public Utilisateur getUtilisateur(String username) {
+		return repoUser.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User  @" + username + " not found"));
 	}
 	
 	public void delete(int id) {
-		repoAdmin.deleteById(id);
+		repoUser.deleteById(id);
 	}
+
 	//update by Utilisateur
-	 public Utilisateur updateAdminByUtilisateur(Utilisateur admin) {
-	        return repoAdmin.save(admin);
-	 }
+	public Utilisateur updateUserByUtilisateur(Utilisateur user) {
+		return repoUser.save(user);
+	}
 	 
 	
 	 
 	 //micro service de suivie
 	 //service d'abonnement
-//	 public Utilisateur updateAdminById(int id) {
-//	        return repoAdmin.save(Product());
+//	 public Utilisateur updateUserById(int id) {
+//	        return repoUser.save(Product());
 //	 }
 	
 

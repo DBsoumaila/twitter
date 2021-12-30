@@ -2,7 +2,7 @@ package com.ensias.twitter.controllers;
 
 import java.util.List;
 
-import com.ensias.twitter.model.Message;
+import com.ensias.twitter.model.messages.Message;
 import com.ensias.twitter.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

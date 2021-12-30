@@ -2,8 +2,8 @@ package com.ensias.twitter.service;
 
 import java.util.List;
 
-import com.ensias.twitter.model.Message;
-import com.ensias.twitter.repo.MessageRepo;
+import com.ensias.twitter.model.messages.Message;
+import com.ensias.twitter.repo.messages.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
